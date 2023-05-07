@@ -1,0 +1,93 @@
+﻿@model List<WebApplication1.Models.report_employee>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout_system.cshtml";
+}
+
+
+
+@section content {
+    <div class="main-panel">
+        <div class="main-content">
+            <div class="content-wrapper">
+                <div class="container-fluid">
+                    <section id="configuration">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title-wrap bar-success">
+                                            <h4 class="card-title">Salary Detail</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-body collapse show">
+                                        <div class="card-block card-dashboard">
+                                            <p class="card-text">
+                                                The bouns salary hour equal @ViewBag.general_setting.extra  hour
+                                                <br />
+                                                The discount salary hour equal @ViewBag.general_setting.discount  hour
+                                                <br />
+                                                the salary per day is @ViewBag.salary_per_day
+                                            </p>
+
+                                            <table class="table table-striped table-bordered zero-configuration mt-40">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Id_employee</th>
+                                                        <th>Day</th>
+                                                        <th>offical time attend</th>
+                                                        <th>time attendance</th>
+                                                        <th>offical time leave</th>
+
+                                                        <th>time leave</th>
+
+                                                        <th>bouns</th>
+                                                        <th>Discount</th>
+
+
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    
+                                                    @foreach (var item in Model)
+                                                    {
+
+
+                                                    <tr>
+                                                        <td>@item.id_emp </td>
+                                                        <td>@item.date_of_today.ToString("yyyy-MM-dd") </td>
+                                                        <td>@ViewBag.emm.attend_time</td>
+                                                        <td>@item.time_attendance </td>
+                                                        <td>@ViewBag.emm.leave_time</td>
+
+                                                        <td>@item.time_leave </td>
+
+
+                                                        <td>@item.extra </td>
+                                                        <td>@item.discount </td>
+
+                                                    </tr>
+                                                    }
+
+                                                </tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+}
+
+

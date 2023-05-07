@@ -1,0 +1,106 @@
+﻿@model WebApplication1.Models.Holiday_Days
+@{
+    ViewBag.Title = "view_general_setting";
+    Layout = "~/Views/Shared/_Layout_system.cshtml";
+}
+
+@section content{
+    <div class="main-panel">
+        <div class="main-content">
+            <div class="content-wrapper">
+                <div class="container-fluid">
+                    <section id="horizontal-form-layouts">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title-wrap bar-success">
+                                            <h4 class="card-title" id="horz-layout-basic">General Settings Form </h4>
+                                        </div>
+                                        <p class="mb-0">This is the basic horizontal form with labels on left and cost estimation form is the default position.</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="px-3">
+                                            <form class="form form-horizontal" method="post" enctype="multipart/form-data">
+                                                @Html.HiddenFor(m => m.g1.id_genral_setting);
+                                                <div class="form-body">
+                                                    <h4 class="form-section">
+                                                        <i class="icon-user"></i>General information
+                                                    </h4>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 label-control" for="projectinput1">The extra: </label>
+                                                        <div class="col-md-9">
+                                                            @Html.TextBoxFor(m => m.g1.extra, new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(m => m.g1.extra, null, new { @class = "text-danger" })
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 label-control" for="projectinput2">
+                                                            Discount:
+                                                        </label>
+                                                        <div class="col-md-9">
+                                                            @Html.TextBoxFor(m => m.g1.discount, new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(m => m.g1.discount, null, new { @class = "text-danger" })
+                                                            
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 label-control" for="projectinput7">Weekly Holidays: </label>
+                                                        <div class="col-md-9">
+                                                            <label>Saturday:</label>
+                                                            @Html.CheckBoxFor(m => m.Saturday)
+                                                            <br>
+                                                            <label>Sunday:</label>
+                                                            @Html.CheckBoxFor(m => m.Sunday)
+                                                            <br>
+                                                            <label>Monday:</label>
+                                                            @Html.CheckBoxFor(m => m.Monday)                                                            <br>
+                                                            <label>Tuesday:</label>
+                                                            @Html.CheckBoxFor(m => m.Tuesday)                                                            <br>
+                                                            <label>Wednesday:</label>
+                                                            @Html.CheckBoxFor(m => m.Wednesday)                                                            <br>
+                                                            <label>Thursday:</label>
+                                                            @Html.CheckBoxFor(m => m.Thursday)                                                            <br>
+                                                            <label>Friday:</label>
+                                                            @Html.CheckBoxFor(m => m.Friday)                                                            <br>
+
+                                                        </div>
+
+
+
+                                                        @if (ViewBag.select_day != null)
+                                                        {
+                                                            <div class="alert alert-danger">@ViewBag.select_day</div>
+                                                        }
+                                                    </div>
+
+
+
+
+                                                    <input type="submit" value="Save" class="col-12 alert-success" />
+                                                    <br>
+                                                    <br>
+                                                    <input type="submit" value="Cancel" class="col-12 btn btn-danger mr-1" />
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </section>
+                    <!-- // Basic form layout section end -->
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    </div>
+}
+

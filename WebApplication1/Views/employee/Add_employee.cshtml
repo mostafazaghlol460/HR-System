@@ -1,0 +1,208 @@
+﻿@model WebApplication1.Models.employee
+
+
+@{
+    ViewBag.Title = "Add_employee";
+    Layout = "~/Views/Shared/_Layout_system.cshtml";
+}
+
+@section content{
+    <div class="main-panel">
+        <div class="main-content">
+            <div class="content-wrapper">
+                <div class="container-fluid">
+                    <section id="horizontal-form-layouts">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h2 class="content-header">Add Employees Form</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title-wrap bar-success">
+                                            <h4 class="card-title" id="horz-layout-basic">Employee Information</h4>
+                                        </div>
+                                        <p class="mb-0">This is the basic horizontal form with labels on left and cost estimation form is the default position.</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="px-3">
+                                            <form class="form form-horizontal" method="post" enctype="multipart/form-data">
+                                                <div class="form-body">
+                                                    <h4 class="form-section">
+                                                        <i class="icon-user"></i> Personal Details
+                                                    </h4>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 label-control" for="projectinput1">First Name: </label>
+                                                        <div class="col-md-9">
+                                                            @Html.TextBoxFor(m => m.name_emp, new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(n => n.name_emp, null, new { @class = "text-danger" })
+
+
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 label-control" for="projectinput2">Address: </label>
+                                                        <div class="col-md-9">
+                                                            @Html.TextBoxFor(m => m.address_emp, new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(n => n.address_emp, null, new { @class = "text-danger" })
+
+
+                                                        </div>
+                                                    </div>
+
+                                                    @*<div class="form-group row">
+                                                            <label class="col-md-3 label-control" for="projectinput3">E-mail: </label>
+                                                            <div class="col-md-9">
+                                                                @Html.TextBoxFor(m => m., new { @class = "form-control" })
+                                                                <input type="text" id="projectinput3" class="form-control" name="email">
+                                                            </div>
+                                                        </div>*@
+
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 label-control" for="projectinput4">Contact Number: </label>
+                                                        <div class="col-md-9">
+                                                            @Html.TextBoxFor(m => m.phone, new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(n => n.phone, null, new { @class = "text-danger" })
+
+                                                        </div>
+                                                    </div>
+
+                                                    <h4 class="form-section">
+                                                        <i class="icon-book-open"></i>Other Details
+                                                    </h4>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 label-control" for="projectinput9">Date Of Birth: </label>
+                                                        <div class="col-md-9">
+                                                            
+                                                                @Html.EditorFor(m => m.DOB, "{0:d}", new { htmlAttributes = new { @class = "form-control", @type = "date", @min = "1950-01-01", @max = "2003-01-01" } })
+                                                                @Html.ValidationMessageFor(n => n.DOB, null, new { @class = "text-danger" })
+
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-md-3 label-control" for="projectinput9">Gender: </label>
+                                                    <div class="col-md-9">
+
+                                                        @Html.DropDownListFor(model => model.gender, (SelectList)ViewBag.gender, "Select Gender", new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.gender, null, new { @class = "text-danger" })
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-md-3 label-control" for="projectinput10">Date of contract: </label>
+                                                    <div class="col-md-9">
+                                                        @Html.EditorFor(m => m.date_of_conference, "{0:d}", new { htmlAttributes = new { @class = "form-control", @type = "date", @min = "2008-01-01", @max = DateTime.Today.ToString("yyyy-MM-dd") } })
+                                                        @Html.ValidationMessageFor(n => n.date_of_conference, null, new { @class = "text-danger" })
+
+                                                    </div>
+                                                    @if (ViewBag.error_of_date_conference != null)
+                                                    {
+                                                        <div class="alert alert-danger">@ViewBag.error_of_date_conference</div>
+                                                    }
+                                                </div>
+                                                <div class=" row">
+                                                    <div class="col-md-12">
+                                                        <div class=" row form-group">
+                                                            <label class="col-md-3 label-control">Start time: </label>
+                                                            <div class="position-relative has-icon-left col-lg-9">
+                                                                @Html.EditorFor(m => m.attend_time, new { htmlAttributes = new { @class = "form-control", @type = "time", @min = "08:00", @max = "18:00" } })
+                                                                @Html.ValidationMessageFor(n => n.attend_time, null, new { @class = "text-danger" })
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                        <div class=" row form-group">
+                                                            <label class="col-md-3 label-control">End time: </label>
+                                                            <div class="position-relative has-icon-left col-lg-9">
+                                                                @Html.EditorFor(m => m.leave_time, new { htmlAttributes = new { @class = "form-control", @type = "time", @min = "08:00", @max = "18:00" } } )
+                                                                @Html.ValidationMessageFor(n => n.leave_time, null, new { @class = "text-danger" })
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    @*<div class=" row form-group">
+                                                        <label class="col-md-3 label-control">AM | PM   </label>
+                                                        <div class="position-relative has-icon-left col-lg-9">
+                                                            @Html.DropDownListFor(model => model.AM_PM_leave, new List<SelectListItem> {
+                                                                     new SelectListItem { Text = "AM", Value = "AM" },
+                                                                     new SelectListItem { Text = "PM", Value = "PM" }
+                                                                 }, "Select AM or PM")
+                                                            @Html.ValidationMessageFor(model => model.AM_PM_leave)
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>*@
+
+                                                <div class="form-group row">
+                                                    <label class="col-md-3 label-control" for="projectinput7">Salary: </label>
+
+                                                    <div class="col-md-9">
+                                                        @Html.TextBoxFor(m => m.salary, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(n => n.salary, null, new { @class = "text-danger" })
+
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="form-group row">
+                                                    <label class="col-md-3 label-control" for="projectinput11">National ID: </label>
+                                                    <div class="col-md-9">
+                                                        @Html.TextBoxFor(m => m.national_id, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(n => n.national_id, null, new { @class = "text-danger" })
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-md-3 label-control" for="projectinput12">Nationality: </label>
+                                                    <div class="col-md-9">
+                                                        @Html.TextBoxFor(m => m.nationality, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(n => n.nationality, null, new { @class = "text-danger" })
+
+                                                    </div>
+                                                </div>
+
+
+
+                                                <input type="submit" value="Save" class="col-12 alert-success" />
+                                                <input type="submit" value="Cancel" class="col-12 btn btn-danger mr-1" />
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+
+
+                <!-- // Basic form layout section end -->
+            </div>
+        </div>
+    </div>
+
+
+
+    </div>
+
+
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
